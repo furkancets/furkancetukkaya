@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furkan Çetükkaya | Senior Data & AI Engineer | PolygramX Founder</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #F6F6F6;           /* White Smoke */
+            --card-bg: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-muted: #555555;
+            --primary: #0000D5;             /* Medium Blue */
+            --primary-hover: #000099;       /* Koyu Laci Hover */
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- STICKY HEADER --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(246, 246, 246, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- NAV RIGHT / LANGUAGE SWITCH --- */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0.3rem;
+        }
+
+        .lang-switch button {
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 0.75rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .lang-switch button.active {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .lang-switch button:not(.active):hover {
+            color: var(--primary);
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* --- HERO & OZGECMIS SECTION --- */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3.5rem;
+            align-items: start;
+            margin-bottom: 5rem;
+        }
+
+        /* Sol Profil Alanı */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 100px;
+        }
+
+        /* Yuvarlak Profil Fotoğrafı */
+        .avatar-wrapper {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--bg-color);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .avatar-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-card h1 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-card p.title {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-card .bio-mini {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Sağ Özgeçmiş Alanı */
+        .about-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        /* --- SECTION TITLE --- */
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- URUN SECTION: POLYGRAMX AI --- */
+        .product-section {
+            margin-bottom: 5rem;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: rgba(0, 0, 213, 0.08);
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .product-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-features li i {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 0.75rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .product-visual {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-visual i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-section {
+            margin-bottom: 5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: var(--bg-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* --- ARTICLES SECTION --- */
+        .articles-section {
+            margin-bottom: 5rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .article-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .article-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            margin-bottom: 5rem;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .contact-link-box {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-link-box i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .contact-link-box span.title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .contact-link-box span.action {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .contact-link-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 850px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            .profile-card {
+                position: static;
+            }
+            .product-card {
+                grid-template-columns: 1fr;
+            }
+            .contact-links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVİGASYON -->
+    <header>
+        <div class="nav-container">
+            <div class="nav-name">Furkan Çetükkaya</div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#hakkimda" data-i18n="nav_about">Hakkımda</a></li>
+                    <li><a href="#polygramx">PolygramX AI</a></li>
+                    <li><a href="#yetenekler" data-i18n="nav_skills">Yetenekler</a></li>
+                    <li><a href="#makaleler" data-i18n="nav_articles">Makaleler</a></li>
+                    <li><a href="#iletisim" data-i18n="nav_contact">İletişim</a></li>
+                </ul>
+                <div class="lang-switch">
+                    <button type="button" id="btn-lang-tr" onclick="setLang('tr')">TR</button>
+                    <button type="button" id="btn-lang-en" onclick="setLang('en')">EN</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- HAKKIMDA / HERO SECTION -->
+        <section id="hakkimda" class="hero-section">
+            
+            <!-- Sol Yuvarlak Fotoğraflı Kart -->
+            <div class="profile-card">
+                <div class="avatar-wrapper">
+                    <img src="https://github.com/furkancets.png" alt="Furkan Çetükkaya" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+                </div>
+                <h1>Furkan Çetükkaya</h1>
+                <p class="title">PolygramX Founder & CEO</p>
+                <p class="bio-mini">Senior Data & AI Engineer</p>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/furkan-cetukkaya" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/furkancets" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:furkancet@polygramx.com" title="E-posta" data-i18n-attr-title="email_title"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Sağ Özgeçmiş Detayları -->
+            <div class="about-content">
+                <h2 data-i18n="about_title">Büyük Veri Mimarisi ve Yapay Zeka Çözümleri</h2>
+                <p data-i18n="about_p1">7 yılı aşkın süredir büyük ölçekli veri mimarileri ve yapay zeka ürünleri inşa ediyor, uçtan uca veri platformları kurarak sektörüme liderlik ediyorum. Elektrik-Elektronik Mühendisliği lisans eğitimimin ardından İTÜ'den Veri Bilimi ve Coursera'dan Python uzmanlık sertifikaları alarak teknik temelimi güçlendirdim.</p>
+                <p data-i18n="about_p2">Kariyerime 2019 yılında Frachtbox'ta başladım. Burada geliştirdiğim otomatik navlun fiyatı tahminleme modeli ve bu model üzerine kurulu ürün, T.C. Ticaret Bakanlığı Dijital Dönüşüm Yarışması'nda ikincilik ödülüne layık görüldü. Ardından Nesine.com'da veri mühendisliği ekibini kuran ilk iki kişiden biri oldum ve şirketin tüm veri altyapısını sıfırdan tasarladım. On-prem Ambari'den başlayıp sırasıyla Cloudera CDP, Kubernetes ve RKE2/Rancher tabanlı platformlara taşıdığım bu yapıda; Spark, Airflow, Druid, Kafka, HDFS, Hive, Superset ve ELK gibi araç setlerini uçtan uca yönettim. Kurduğum bu altyapı üzerinde son kullanıcıya doğrudan dokunan yapay zeka tabanlı at yarışı tahmin botunu hayata geçirdim; ayrıca 8x H100 GPU kümesinde vLLM ile LLM servisleştirme ve Neo4j tabanlı Graph-RAG sistemlerini kurarak 250'den fazla aktif kullanıcıya sundum.</p>
+                <p data-i18n="about_p3">Şu anda Zalando'da, e-ticaret müşteri davranış verilerini gerçek zamanlı işleyen, günlük 15-20 TB hacme sahip devasa akış (streaming) platformunu yönetiyorum. Spark Structured Streaming, Kafka/Nakadi, Delta Lake ve Databricks üzerine kurulu bu sistemlerin geliştirilmesi ve işletilmesinden sorumluyum.</p>
+                <p data-i18n="about_p4">Teknik çalışmalarımın yanı sıra bilgi birikimimi topluluklarla paylaşmayı önemsiyorum. Yaklaşık 7 yıldır Bilkent, Kadir Has ve Yeditepe gibi üniversitelerin yanı sıra Veri Bilimi Okulu gibi platformlarda veri mühendisliği ve girişimcilik üzerine konuşmalar yapıyorum; bu etkinlikler aracılığıyla bugüne kadar 900'den fazla katılımcıya ulaştım. Ayrıca Medium'da teknik yazılar kaleme alıyor ve genç mühendislere mentörlük yapıyorum.</p>
+                <p data-i18n="about_p5">Bugün tüm bu birikimi, 2025 yılında kurucusu olduğum PolygramX çatısı altında bir AI platformuna dönüştürdüm. Geliştirdiğimiz PolygramX AI; AI, yazılım ve teknoloji ve bilişim alanında çalışan profesyonellerin bilgi, deneyim, AI modelleri ve geçmiş projelerinden elde ettikleri teknik birikimi tek bir noktada toplayan yapay zeka tabanlı bir üründür. Mühendislik ekiplerinin dağınık halde duran kod hafızasını ve uzmanlığını sürekli gelişen ortak bir bilgi sistemine dönüştürerek, teknoloji ekiplerinin üretkenliğini ve kurumsal hafızayı artıran yeni nesil yapay zeka çözümleri sunuyoruz.</p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 data-i18n="stat1_num">7+ Yıl</h3>
+                        <p data-i18n="stat1_label">Sektör Deneyimi</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>15-20 TB</h3>
+                        <p data-i18n="stat2_label">Günlük Veri İşleme</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>8x H100</h3>
+                        <p data-i18n="stat3_label">GPU Kümeleri & LLM</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POLYGRAMX AI SECTION -->
+        <section id="polygramx" class="product-section">
+            <div class="section-header">
+                <h2 data-i18n="product_header">Geliştirilen AI Ürünü</h2>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <span class="product-badge">AI Solution</span>
+                    <h3>PolygramX AI</h3>
+                    <p data-i18n="product_desc">Kurumların karmaşık veri kaynaklarını doğal dil işleme ve modern RAG (Retrieval-Augmented Generation) mimarileriyle anlamlandıran yapay zeka ürünü.</p>
+                    <ul class="product-features">
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="feat1">Graph-RAG & Vektör Arama Altyapısı</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="feat2">MCP (Model Context Protocol) Entegrasyonu</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span data-i18n="feat3">On-Premise ve Güvenli Hizmet</span></li>
+                    </ul>
+                    <a href="https://polygramx.com" target="_blank" class="btn-primary" data-i18n="btn_explore">İncele</a>
+                </div>
+                <div class="product-visual">
+                    <i class="fas fa-brain"></i>
+                    <h4 style="margin-bottom: 0.5rem;">PolygramX Engine</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="product_visual_desc">Ölçeklenebilir, Güvenli ve Agentic AI Mimari Çözümleri</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- YETENEKLER SECTION -->
+        <section id="yetenekler" class="skills-section">
+            <div class="section-header">
+                <h2 data-i18n="skills_header">Teknik Yetenekler</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4><i class="fas fa-robot"></i> AI & LLM Engineering</h4>
+                    <div class="skill-tags">
+                        <span class="tag">RAG / Graph-RAG</span>
+                        <span class="tag">vLLM & sglang</span>
+                        <span class="tag">OpenWebUI</span>
+                        <span class="tag">MCP</span>
+                        <span class="tag">Elasticsearch Vector Search</span>
+                        <span class="tag">Neo4j</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4><i class="fas fa-database"></i> Data Engineering & Cloud</h4>
+                    <div class="skill-tags">
+                        <span class="tag">Apache Spark / PySpark</span>
+                        <span class="tag">Databricks</span>
+                        <span class="tag">Apache Airflow</span>
+                        <span class="tag">Apache Kafka / Flink</span>
+                        <span class="tag">dbt</span>
+                        <span class="tag">GCP / AWS Fargate</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h4><i class="fas fa-server"></i> DevOps & Infrastructure</h4>
+                    <div class="skill-tags">
+                        <span class="tag">Kubernetes (k8s)</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">MLflow</span>
+                        <span class="tag">ELK Stack</span>
+                        <span class="tag">FastAPI</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAKALELER SECTION -->
+        <section id="makaleler" class="articles-section">
+            <div class="section-header">
+                <h2 data-i18n="articles_header">Yazılar & Makaleler</h2>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-date" data-i18n="article1_date">Mart 2026</div>
+                    <h4>Distributed Hadoop Cluster2(Multinode Kafka-KRaft) with all dependencies</h4>
+                    <p>In our previous article, we discussed the setup of a Hadoop cluster and Spark as a multi-node system. Now, we are expanding our cluster by establishing a multi-node Kafka cluster with three brokers on the same cluster.</p>
+                    <a href="https://medium.com/@furkancets" target="_blank" class="article-link"><span data-i18n="read_more">Devamını Oku</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="article-card">
+                    <div class="article-date" data-i18n="article2_date">Ocak 2026</div>
+                    <h4>Distributed Hadoop Cluster2.1(Spark Streaming-Apple News) with kafka producer</h4>
+                    <p>Hello friends, recently we provided answers to questions like: How to set up a distributed Hadoop cluster and Spark?</p>
+                    <a href="https://medium.com/@furkancets" target="_blank" class="article-link"><span data-i18n="read_more">Devamını Oku</span> <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- İLETİŞİM SECTION -->
+        <section id="iletisim" class="contact-section">
+            <div class="contact-card">
+                <h3 data-i18n="contact_header">İletişim</h3>
+                <p data-i18n="contact_desc">Projeler, teknik danışmanlık veya PolygramX çözümleri için aşağıdaki kanallardan doğrudan bağlantı kurabilirsiniz.</p>
+                
+                <div class="contact-links-grid">
+                    <a href="mailto:furkancet@polygramx.com" class="contact-link-box">
+                        <i class="fas fa-envelope"></i>
+                        <span class="title" data-i18n="contact_email_title">E-posta</span>
+                        <span class="action" data-i18n="contact_email_action">E-posta Gönder</span>
+                    </a>
+                    <a href="https://linkedin.com/in/furkan-cetukkaya" target="_blank" class="contact-link-box">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span class="title">LinkedIn</span>
+                        <span class="action" data-i18n="contact_linkedin_action">Bağlantı Kur</span>
+                    </a>
+                    <a href="https://github.com/furkancets" target="_blank" class="contact-link-box">
+                        <i class="fab fa-github"></i>
+                        <span class="title">GitHub</span>
+                        <span class="action" data-i18n="contact_github_action">Profilimi Ziyaret Et</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ALT BAR / FOOTER -->
+    <footer>
+        <p data-i18n="footer_text">&copy; 2026 Furkan Çetükkaya. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            nav_about: { tr: "Hakkımda", en: "About" },
+            nav_skills: { tr: "Yetenekler", en: "Skills" },
+            nav_articles: { tr: "Makaleler", en: "Articles" },
+            nav_contact: { tr: "İletişim", en: "Contact" },
+            email_title: { tr: "E-posta", en: "Email" },
+
+            about_title: { tr: "Büyük Veri Mimarisi ve Yapay Zeka Çözümleri", en: "Large-Scale Data Architecture and AI Solutions" },
+            about_p1: { tr: "7 yılı aşkın süredir büyük ölçekli veri mimarileri ve yapay zeka ürünleri inşa ediyor, uçtan uca veri platformları kurarak sektörüme liderlik ediyorum. Elektrik-Elektronik Mühendisliği lisans eğitimimin ardından İTÜ'den Veri Bilimi ve Coursera'dan Python uzmanlık sertifikaları alarak teknik temelimi güçlendirdim.", en: "For more than 7 years, I have been building large-scale data architectures and AI products, leading in my field by establishing end-to-end data platforms. After my Electrical-Electronics Engineering undergraduate degree, I strengthened my technical foundation with a Data Science certificate from ITU and a Python specialization from Coursera." },
+            about_p2: { tr: "Kariyerime 2019 yılında Frachtbox'ta başladım. Burada geliştirdiğim otomatik navlun fiyatı tahminleme modeli ve bu model üzerine kurulu ürün, T.C. Ticaret Bakanlığı Dijital Dönüşüm Yarışması'nda ikincilik ödülüne layık görüldü. Ardından Nesine.com'da veri mühendisliği ekibini kuran ilk iki kişiden biri oldum ve şirketin tüm veri altyapısını sıfırdan tasarladım. On-prem Ambari'den başlayıp sırasıyla Cloudera CDP, Kubernetes ve RKE2/Rancher tabanlı platformlara taşıdığım bu yapıda; Spark, Airflow, Druid, Kafka, HDFS, Hive, Superset ve ELK gibi araç setlerini uçtan uca yönettim. Kurduğum bu altyapı üzerinde son kullanıcıya doğrudan dokunan yapay zeka tabanlı at yarışı tahmin botunu hayata geçirdim; ayrıca 8x H100 GPU kümesinde vLLM ile LLM servisleştirme ve Neo4j tabanlı Graph-RAG sistemlerini kurarak 250'den fazla aktif kullanıcıya sundum.", en: "I started my career in 2019 at Frachtbox, where the automated freight price prediction model I developed, and the product built on it, won second place in the Turkish Ministry of Trade's Digital Transformation Competition. I then became one of the first two data engineers to build the data engineering team at Nesine.com, designing the company's entire data infrastructure from the ground up. Starting from on-prem Ambari, I migrated this infrastructure through Cloudera CDP, Kubernetes, and RKE2/Rancher-based platforms, managing tool sets such as Spark, Airflow, Druid, Kafka, HDFS, Hive, Superset, and ELK end-to-end. On top of this infrastructure, I launched an AI-based horse racing prediction bot that reached end users directly, and served over 250 active users by setting up LLM serving with vLLM on an 8x H100 GPU cluster along with Neo4j-based Graph-RAG systems." },
+            about_p3: { tr: "Şu anda Zalando'da, e-ticaret müşteri davranış verilerini gerçek zamanlı işleyen, günlük 15-20 TB hacme sahip devasa akış (streaming) platformunu yönetiyorum. Spark Structured Streaming, Kafka/Nakadi, Delta Lake ve Databricks üzerine kurulu bu sistemlerin geliştirilmesi ve işletilmesinden sorumluyum.", en: "I currently manage a massive streaming platform at Zalando that processes e-commerce customer behavior data in real time, handling a daily volume of 15-20 TB. I am responsible for developing and operating these systems, built on Spark Structured Streaming, Kafka/Nakadi, Delta Lake, and Databricks." },
+            about_p4: { tr: "Teknik çalışmalarımın yanı sıra bilgi birikimimi topluluklarla paylaşmayı önemsiyorum. Yaklaşık 7 yıldır Bilkent, Kadir Has ve Yeditepe gibi üniversitelerin yanı sıra Veri Bilimi Okulu gibi platformlarda veri mühendisliği ve girişimcilik üzerine konuşmalar yapıyorum; bu etkinlikler aracılığıyla bugüne kadar 900'den fazla katılımcıya ulaştım. Ayrıca Medium'da teknik yazılar kaleme alıyor ve genç mühendislere mentörlük yapıyorum.", en: "Alongside my technical work, I value sharing my knowledge with the community. For about 7 years, I have been giving talks on data engineering and entrepreneurship at universities such as Bilkent, Kadir Has, and Yeditepe, as well as platforms like Veri Bilimi Okulu, reaching over 900 participants through these events to date. I also write technical articles on Medium and mentor young engineers." },
+            about_p5: { tr: "Bugün tüm bu birikimi, 2025 yılında kurucusu olduğum PolygramX çatısı altında bir AI platformuna dönüştürdüm. Geliştirdiğimiz PolygramX AI; AI, yazılım ve teknoloji ve bilişim alanında çalışan profesyonellerin bilgi, deneyim, AI modelleri ve geçmiş projelerinden elde ettikleri teknik birikimi tek bir noktada toplayan yapay zeka tabanlı bir üründür. Mühendislik ekiplerinin dağınık halde duran kod hafızasını ve uzmanlığını sürekli gelişen ortak bir bilgi sistemine dönüştürerek, teknoloji ekiplerinin üretkenliğini ve kurumsal hafızayı artıran yeni nesil yapay zeka çözümleri sunuyoruz.", en: "Today, I have channeled all of this experience into an AI platform under PolygramX, which I founded in 2025. PolygramX AI is an AI-based product that brings together, in one place, the knowledge, experience, AI models, and technical know-how that professionals working in AI, software, and technology gain from their past projects. By turning engineering teams' scattered code memory and expertise into a continuously evolving shared knowledge system, we deliver next-generation AI solutions that boost tech team productivity and institutional memory." },
+
+            stat1_num: { tr: "7+ Yıl", en: "7+ Years" },
+            stat1_label: { tr: "Sektör Deneyimi", en: "Industry Experience" },
+            stat2_label: { tr: "Günlük Veri İşleme", en: "Daily Data Processing" },
+            stat3_label: { tr: "GPU Kümeleri & LLM", en: "GPU Clusters & LLM" },
+
+            product_header: { tr: "Geliştirilen AI Ürünü", en: "AI Product Developed" },
+            product_desc: { tr: "Kurumların karmaşık veri kaynaklarını doğal dil işleme ve modern RAG (Retrieval-Augmented Generation) mimarileriyle anlamlandıran yapay zeka ürünü.", en: "An AI product that makes sense of organizations' complex data sources using natural language processing and modern RAG (Retrieval-Augmented Generation) architectures." },
+            feat1: { tr: "Graph-RAG & Vektör Arama Altyapısı", en: "Graph-RAG & Vector Search Infrastructure" },
+            feat2: { tr: "MCP (Model Context Protocol) Entegrasyonu", en: "MCP (Model Context Protocol) Integration" },
+            feat3: { tr: "On-Premise ve Güvenli Hizmet", en: "On-Premise & Secure Service" },
+            btn_explore: { tr: "İncele", en: "Explore" },
+            product_visual_desc: { tr: "Ölçeklenebilir, Güvenli ve Agentic AI Mimari Çözümleri", en: "Scalable, Secure, and Agentic AI Architecture Solutions" },
+
+            skills_header: { tr: "Teknik Yetenekler", en: "Technical Skills" },
+
+            articles_header: { tr: "Yazılar & Makaleler", en: "Writings & Articles" },
+            article1_date: { tr: "Mart 2026", en: "March 2026" },
+            article2_date: { tr: "Ocak 2026", en: "January 2026" },
+            read_more: { tr: "Devamını Oku", en: "Read More" },
+
+            contact_header: { tr: "İletişim", en: "Contact" },
+            contact_desc: { tr: "Projeler, teknik danışmanlık veya PolygramX çözümleri için aşağıdaki kanallardan doğrudan bağlantı kurabilirsiniz.", en: "You can reach out directly through the channels below for projects, technical consulting, or PolygramX solutions." },
+            contact_email_title: { tr: "E-posta", en: "Email" },
+            contact_email_action: { tr: "E-posta Gönder", en: "Send Email" },
+            contact_linkedin_action: { tr: "Bağlantı Kur", en: "Connect" },
+            contact_github_action: { tr: "Profilimi Ziyaret Et", en: "Visit My Profile" },
+
+            footer_text: { tr: "© 2026 Furkan Çetükkaya. Tüm hakları saklıdır.", en: "© 2026 Furkan Çetükkaya. All rights reserved." }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                const key = el.getAttribute('data-i18n');
+                if (translations[key] && translations[key][lang] !== undefined) {
+                    el.textContent = translations[key][lang];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-attr-title]').forEach(function (el) {
+                const key = el.getAttribute('data-i18n-attr-title');
+                if (translations[key] && translations[key][lang] !== undefined) {
+                    el.setAttribute('title', translations[key][lang]);
+                }
+            });
+
+            document.documentElement.setAttribute('lang', lang);
+
+            const btnTr = document.getElementById('btn-lang-tr');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (btnTr && btnEn) {
+                btnTr.classList.toggle('active', lang === 'tr');
+                btnEn.classList.toggle('active', lang === 'en');
+            }
+
+            try {
+                localStorage.setItem('site-lang', lang);
+            } catch (e) {
+                /* localStorage unavailable, ignore */
+            }
+        }
+
+        (function initLang() {
+            let saved = null;
+            try {
+                saved = localStorage.getItem('site-lang');
+            } catch (e) {
+                saved = null;
+            }
+
+            if (saved === 'tr' || saved === 'en') {
+                setLang(saved);
+                return;
+            }
+
+            const browserLang = (navigator.language || navigator.userLanguage || 'tr').toLowerCase();
+            const detected = browserLang.startsWith('tr') ? 'tr' : 'en';
+            setLang(detected);
+        })();
+    </script>
+
+</body>
+</html>
